@@ -1,4 +1,4 @@
-install.packages("text2vec", dependencies = TRUE)
+#install.packages("text2vec", dependencies = TRUE)
 library("text2vec")
 
 
@@ -48,8 +48,11 @@ my_articles = get_scopus_papers(my_query_string)
 
 #Remove copyright sign.
 abstract = my_articles$Abstract
-abstract = gsub("Copyright ?+[^.]*[.]","",abstract)
-abstract = gsub("?+[^.]*[.]","",abstract) # Depdenging on the enviroment or data you might need something different* 
+# abstract = gsub("Copyright +[^.]*[.]","",abstract)
+# abstract = gsub("?+[^.]*[.]","",abstract) # Depdenging on the enviroment or data you might need something different* 
+abstract = gsub("Copyright ©+[^.]*[.]","",abstract)
+abstract = gsub("©+[^.]*[.]","",abstract) # Depdenging on the enviroment or data you might need something different* 
+
 abstract = gsub("All rights reserved[.]","",abstract)
 abstract = gsub("All right reserved[.]","",abstract)
 abstract = gsub("No abstract available[.]","",abstract)

@@ -66,3 +66,10 @@ tw_api_key = ""
 
 getoldtweets_path = paste(my_work_dir,"/GetOldTweets-java-master", sep="")
 
+
+#-----Removing unnecessary words----------------
+#various stopword lists can be used https://cran.r-project.org/web/packages/stopwords/stopwords.pdf
+#stopword list is also context specific. Here you can do manual removals
+#also automated methods tf/idf exist. EDIT
+my_stopwords = c(stopwords::stopwords(language = "en", source = "snowball"),"botnet", "botnets")
+

@@ -1,14 +1,16 @@
 #install.packages("text2vec", dependencies=TRUE)
-#install.packages("tm", dependencies=TRUE)
+# install.packages("tm", dependencies=TRUE)
 #install.packages("magrittr", dependencies=TRUE)
-#install.packages("LDAvis")
+# install.packages("LDAvis")
+# install.packages("NLP", dependencies = TRUE)
+
 library(text2vec)
 library(tm)
 library(magrittr)
 library(LDAvis)
 
 #May take a while - wait patiently
-my_file = "my_Scopus_TSE_articles_clean_data.RData"
+my_file = "my_Scopus_botnet-sco_data.RData"
 #draw_my_IAMap = function(my_file) {
   
   print(paste("Interactive LDA Cluster, my_file: ", my_file))
@@ -24,7 +26,7 @@ my_file = "my_Scopus_TSE_articles_clean_data.RData"
   my_tokens = my_text %>% tolower %>% word_tokenizer
   
   it = itoken(my_tokens)
-  
+  #TÄMÄ HOITUIS clasroomspecific filulla
   my_stopwords = c(stopwords::stopwords(language = "en", source = "snowball"),"myStopword1", "myStopword2")
   
   
@@ -46,6 +48,8 @@ my_file = "my_Scopus_TSE_articles_clean_data.RData"
   
   #LDA model with 20 topics to provide an overview
   #lda_model = LatentDirichletAllocation$new(n_topics=20, vocabulary=my_vocab)
+  
+  #TÄMÄ vaikuttaa aika paljon, 20 on aika hyvä
   lda_model = LatentDirichletAllocation$new(n_topics=20)
 
   #We run 200 iterations

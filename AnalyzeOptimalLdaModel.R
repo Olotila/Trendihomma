@@ -10,7 +10,7 @@ library("text2vec")
 library("nnet") #Breaks ties at random when searching for max
 
 
-my_file = "my_Scopus_TSE_articles_clean_data.RData"
+my_file = "my_Scopus_botnet-sco_data.RData"
 #Articles. Make sure this is the same you used to build LDA model otherwise it will not make any sense
 my_temp_file = paste(my_data_dir, "/", sep="")
 my_temp_file = paste(my_temp_file, my_file, sep="")
@@ -29,7 +29,8 @@ load(my_LDAWinner_file)
 #Create important arrays with descriptive names
 #Documents to topics and get top 'n' terms for each topic
 Topics <- apply(doc_topic_distr, 1, function(x) which.is.max (x))
-Terms = lda_model$get_top_words(LDAWinner, 50)
+# Terms = lda_model$get_top_words(LDAWinner, 50)
+Terms = lda_model$get_top_words(50)
 
 #Still in box......................................
 Titles = my_articles[,"Title"]
@@ -68,7 +69,9 @@ qplot(as.numeric(subset(Years, Topics==which.max(medians) |  Topics==which.min(m
 
 #------top-cited topics----------------------------------------
 Cite_sum = lapply(1:length(Terms[1,]), function(i) sum(as.numeric(Cites[Topics==i])))
-Topic_age = lapply(1:length(Terms[1,]), function(i) sum(2015 - as.numeric(Years[Topics==i])))
+Topic_age = lapply(1:length(Terms[1,]), function(i) sum(2019 - as.numeric(Years[Topics==i])))
+# Topic_age = lapply(1:length(Terms[1,]), function(i) sum(2015 - as.numeric(Years[Topics==i])))
+
 Paper_counts = lapply(1:length(Terms[1,]), function(i) length(Titles[Topics==i]))
 Cite_per_year = unlist(Cite_sum)/unlist(Topic_age)
 Cite_per_paper = unlist(Cite_sum)/unlist(Paper_counts)

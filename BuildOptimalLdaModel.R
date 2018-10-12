@@ -4,7 +4,7 @@
 #install.packages("slam", dependencies = TRUE)
 #install.packages("Rmpfr", dependencies = TRUE)
 library(tm)
-#library(NLP)
+library(NLP)
 #library(magrittr)
 #library(slam)
 #library(Rmpfr)
@@ -16,12 +16,16 @@ library("tokenizers")
 #source ("mclapply.hack.R")
 
 #Set the file to be analyzed, e.g.
-my_file = "my_Scopus_TSE_articles_clean_data.RData"
+
+# LAITA TÄHÄN oma filunimi
+# my_file = "my_Scopus_botnet-sco_data.RData"
+my_file = "my_Scopus_botnet-sco_data.RData"
 
 my_temp_file = paste(my_data_dir, "/", sep="")
 my_temp_file = paste(my_temp_file, my_file, sep="")
 load(my_temp_file)
 
+# TÄMÄ ON LAITETTAVISSA clasroomsettings filussa
 my_stopwords = c(stopwords::stopwords(language = "en", source = "snowball"),"myStopword1", "myStopword2")
 
 #Articles with NA dates cause false analysis later kick them out
@@ -48,7 +52,8 @@ vectorizer = vocab_vectorizer(v)
 dtm = create_dtm(it, vectorizer, type = "dgTMatrix")
 
 # we create 10 topics 
-lda_model = LDA$new(n_topics = 10, doc_topic_prior = 0.1, topic_word_prior = 0.01)
+# n_topics VAIKUTTAA VISSIN, VOI SÄÄTÄÄ
+lda_model = LDA$new(n_topics = 30, doc_topic_prior = 0.1, topic_word_prior = 0.01)
 doc_topic_distr = lda_model$fit_transform(x = dtm, n_iter = 1000, 
                           convergence_tol = 0.001, n_check_convergence = 25, 
                           #convergence_tol = 0.01, n_check_convergence = 25, 
@@ -62,6 +67,8 @@ perpperplexity_score <- perplexity(new_dtm, topic_word_distribution = lda_model$
 #how good is our model
 #Try playin with n_topics, doc_topic_prior, topic_word_prior to see how to get better
 perpperplexity_score
+
+# TÄSSÄ ON SÄÄJETTY LAMBDAA, sitä voi ittekki valita
 #Lets investigate our topics
 lda_model$get_top_words(n = 7, topic_number = c(1:10), lambda = 1)
 #Lambda setting highlight more topic specific but less probable words over all. Observe the difference
@@ -73,15 +80,23 @@ lda_model$get_top_words(n = 7, topic_number = c(1:10), lambda = 0.3)
 
 
 
+# install.packages("DEoptim", dependencies = TRUE)
+
+# TÄMÄ TOIMII JOSKUS
 library(DEoptim)
+
 #Search space needs to be defined topics are between 10-500 and hyberparameters are between 0 and 1
+
+# MITÄ enemmän artikkeleita, sitä suurempi HIGHER eka luku. Eli optimointia sen suhteen, että ei ole liikaa eikä liian vähän artikkeleita, jotta trendi näkyis todenmukasesti
 lower <- c(10, 0, 0)
-higher <- c(500, 1, 0.3)
+higher <- c(150, 1, 0.3)
 
 #here we start the search with 30 item population
 #reduce / increase itermax and NP if too slow or fast
 ##The Deoptim package is really picky and may require R-studio restart to work correcly. If you see no print then it is not working
 #NP should be 30 3 parameter ten times for each (3x10)
+
+# TÄTÄ HÄÄTYY SÄÄTÄÄ vissin
 DEoptim(optimalLda, lower, higher, DEoptim.control(strategy = 2, itermax = 10, NP = 10, CR = 0.5, F = 0.8))
 
 #lets apply the best input parameter and genera a model based on it. Then save it for further analysis (Analyze optimal model)--------------------
@@ -112,6 +127,7 @@ save(doc_topic_distr, file=lda_file_doc_topic_dist)
 #sanasto?
 lda_model
 
+# TÄMÄ HÄÄTYY JUOKSUTTAA EKA, sitten deoptim
 #function------------------------------------------------------------
 optimalLda <- function (x){
   sink("NUL")
@@ -152,3 +168,4 @@ optimalLda <- function (x){
   print(paste("k:", m_k, "alpha:", m_alpha, "beta", m_beta, "perp:", perp))
   perp
 }
+

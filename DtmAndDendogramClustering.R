@@ -1,4 +1,4 @@
-#*** Tämä katsoo sanoja lähteestä ja plottaa frekvenssin per (valikoidut) sana. ***#
+#*** T?m? katsoo sanoja l?hteest? ja plottaa frekvenssin per (valikoidut) sana. ***#
 
 # install.packages("ggplot2", dependencies = TRUE)
 # install.packages("tm", dependencies = TRUE)
@@ -35,7 +35,7 @@ my_file <- "my_STO_botnet-so_data.RData" # Stackexchange
   #various stopword lists can be used https://cran.r-project.org/web/packages/stopwords/stopwords.pdf
   #stopword list is also context specific. Here you can do manual removals
 	#also automated methods tf/idf exist. EDIT
-	my_stopwords = c(stopwords::stopwords(language = "en", source = "snowball"),"botnet", "botnets")
+	# my_stopwords = c(stopwords::stopwords(language = "en", source = "snowball"),"botnet", "botnets")
 	
 	#A good is to remove more words that we do not care about 
 	Abstract_clean = removeWords(my_articles$Abstract_clean, my_stopwords)
