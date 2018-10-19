@@ -20,7 +20,7 @@ if (!file.exists(my_data_dir)) {
 #** Set your own StackOverflow API key here (or use the default below)
 #** EDIT THE FOLLOWING LINE for your own API key
 #api_key = "9raZ36FkYGFHDSNrW)gdsw((" TODO old file name edit out
-so_api_key = "9raZ36FkYGFHDSNrW)gdsw(("
+#so_api_key = "9raZ36FkYGFHDSNrW)gdsw(("
 
 
 

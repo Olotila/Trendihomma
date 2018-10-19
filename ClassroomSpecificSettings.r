@@ -59,9 +59,9 @@ if (libPath %in% .libPaths() == FALSE)
 }
 
 #Key Janne
-sc_api_key = "320b07d78fa6a4b47b7dcc1f156658de"
+sc_api_key_Janne = "320b07d78fa6a4b47b7dcc1f156658de"
 
-#sc_api_key = "cbf4132ececcb84b58a2aa5244ba7ce7"
+sc_api_key_Ohto = "cbf4132ececcb84b58a2aa5244ba7ce7"
 
 so_api_key = "EgDQqc14dkQjHIDevXFJ)A(("
 

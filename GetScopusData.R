@@ -16,7 +16,9 @@ source("FunctionsScopusApi.R")
 #query_string = "ISSN(0098-5589)"
 #my_filename = "TSE_All"
 
-set_api_key(sc_api_key)
+set_api_key(sc_api_key_Janne)
+#set_api_key(sc_api_key_Ohto)
+#HOX SET YOUR OWN API KEY LIKE THIS!
 
 #api_key Janne
 #sc_api_key = "320b07d78fa6a4b47b7dcc1f156658de"
