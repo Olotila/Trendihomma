@@ -21,7 +21,6 @@ if (!file.exists(libPath))
   dir.create(libPath, showWarnings = FALSE)  
 }
 
-
 dataPath = paste(my_work_dir,'/','Data', sep="")
 
 if (!file.exists(dataPath))
@@ -58,10 +57,12 @@ if (libPath %in% .libPaths() == FALSE)
   .libPaths(c(libPath,.libPaths()))
 }
 
-#Key Janne
+
 sc_api_key_Janne = "320b07d78fa6a4b47b7dcc1f156658de"
 
 sc_api_key_Ohto = "cbf4132ececcb84b58a2aa5244ba7ce7"
+
+sc_api_key_Susanna = ""
 
 so_api_key = "EgDQqc14dkQjHIDevXFJ)A(("
 

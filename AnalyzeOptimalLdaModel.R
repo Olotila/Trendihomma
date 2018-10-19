@@ -10,7 +10,9 @@ library("text2vec")
 library("nnet") #Breaks ties at random when searching for max
 
 
+my_data_dir = 'data'
 my_file = "my_Scopus_botnet-sco_data.RData"
+
 #Articles. Make sure this is the same you used to build LDA model otherwise it will not make any sense
 my_temp_file = paste(my_data_dir, "/", sep="")
 my_temp_file = paste(my_temp_file, my_file, sep="")
@@ -24,13 +26,13 @@ my_doctopicdist_file = paste(my_work_dir,  "/", sep="")
 my_doctopicdist_file = paste(my_doctopicdist_file, my_data_dir, sep="")
 my_doctopicdist_file = paste(my_doctopicdist_file, "/LDADocTopicDist.RData", sep="")
 load(my_doctopicdist_file)
-load(my_LDAWinner_file)
+load(my_LDAWinner_file) #teacher said something about removing this?
 
 #Create important arrays with descriptive names
 #Documents to topics and get top 'n' terms for each topic
 Topics <- apply(doc_topic_distr, 1, function(x) which.is.max (x))
 # Terms = lda_model$get_top_words(LDAWinner, 50)
-Terms = lda_model$get_top_words(50)
+Terms = lda_model$get_top_words(50, lambda = 0.3)
 
 #Still in box......................................
 Titles = my_articles[,"Title"]
@@ -137,6 +139,8 @@ significance_pos = sapply(1:length(p_level),function(x) intersect(names(theta_me
 
 #source ("thesis_R/C14_trends-table-significance.R")
 source ("thesis_R/C14_trends-table-significance_no_latex.R")
+#shows how certain we can be some topics are getting less or more popular, first is 95%, next 99% and so on
+#we can be 95% 19 topics and retting more popular and so on..
 
 
 

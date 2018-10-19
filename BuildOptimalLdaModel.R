@@ -1,5 +1,8 @@
 #install.packages("tm", dependencies = TRUE)
 #install.packages("NLP", dependencies = TRUE)
+#install.packages("text2vec", dependencies = TRUE)
+#install.packages("tokenizers", dependencies = TRUE)
+
 #install.packages("magrittr", dependencies = TRUE)
 #install.packages("slam", dependencies = TRUE)
 #install.packages("Rmpfr", dependencies = TRUE)
@@ -21,6 +24,7 @@ my_data_dir = 'data'
 
 # LAITA TÄHÄN oma filunimi
 # my_file = "my_Scopus_botnet-sco_data.RData"
+
 my_file = "my_Scopus_botnet-sco_data.RData"
 
 my_temp_file = paste(my_data_dir, "/", sep="")
@@ -54,7 +58,7 @@ vectorizer = vocab_vectorizer(v)
 dtm = create_dtm(it, vectorizer, type = "dgTMatrix")
 
 # we create 10 topics 
-# n_topics VAIKUTTAA VISSIN, VOI SÄÄTÄÄ
+# n_topics VAIKUTTAA VISSIN, VOI SÄÄTÄÄ (tämän ajo rivi 105 ja siitä saapi nuita lukuja. logi $member$pop)
 lda_model = LDA$new(n_topics = 30, doc_topic_prior = 0.1, topic_word_prior = 0.01)
 doc_topic_distr = lda_model$fit_transform(x = dtm, n_iter = 1000, 
                           convergence_tol = 0.001, n_check_convergence = 25, 
@@ -110,6 +114,7 @@ it <- itoken(tokens, progressbar = FALSE)
 v = create_vocabulary(it) %>% prune_vocabulary(term_count_min = 10, doc_proportion_max = 0.3)
 vectorizer = vocab_vectorizer(v)
 dtm = create_dtm(it, vectorizer, type = "dgTMatrix")
+
 lda_model = LDA$new(n_topics = 298, doc_topic_prior = 0.2518732, topic_word_prior = 0.005613016)
 doc_topic_distr = lda_model$fit_transform(x = dtm, n_iter = 1000, 
                                           convergence_tol = 0.001, n_check_convergence = 25, 

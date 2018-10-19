@@ -1,4 +1,4 @@
-install.packages("text2vec", dependencies = TRUE)
+#install.packages("text2vec", dependencies = TRUE)
 library("text2vec")
 
 

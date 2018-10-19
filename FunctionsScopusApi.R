@@ -37,8 +37,8 @@ get_scopus_papers = function (query_string){
     #https://api.elsevier.com/documentation/SCOPUSSearchAPI.wadl
     
     #Vaihtele n?it? jos on vpn tai yliopistonverkko tai ei
-    #resp = generic_elsevier_api(query=query_string, type="search", search_type="scopus", start=start_item, view="COMPLETE")
-    resp = generic_elsevier_api(query=query_string, type="search", search_type="scopus", start=start_item)
+    resp = generic_elsevier_api(query=query_string, type="search", search_type="scopus", start=start_item, view="COMPLETE")
+    #resp = generic_elsevier_api(query=query_string, type="search", search_type="scopus", start=start_item)
     if (resp$get_statement$status_code != 200) {
       stop(paste(resp))
     }

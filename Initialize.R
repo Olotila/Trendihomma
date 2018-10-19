@@ -7,9 +7,8 @@ rm(list=ls())
 #** Set your work directory to the TrendMining project directory (where the script file are)
 #** A folder "data" will be created for saving files (if such folder does not exist)
 #** EDIT THE FOLLOWING LINE, set your own work directory
-#setwd("K:/My Documents/Projects/TrendMining_2017/TrendMining")
-#setwd("D:/Git/TrendMining")
-setwd("C:/Users/jannkall/Desktop/Trendihomma")
+
+setwd("C:/Temp/Trendihomma")
 my_work_dir = getwd()
 my_data_dir = "data"
 if (!file.exists(my_data_dir)) {
@@ -19,9 +18,8 @@ if (!file.exists(my_data_dir)) {
 #** STACKOVERFLOW API KEY
 #** Set your own StackOverflow API key here (or use the default below)
 #** EDIT THE FOLLOWING LINE for your own API key
-#api_key = "9raZ36FkYGFHDSNrW)gdsw((" TODO old file name edit out
-#so_api_key = "9raZ36FkYGFHDSNrW)gdsw(("
 
+#api keys are now located in classroom specificsettings
 
 
 #** GETOLDTWEETS-JAVA PATH
@@ -39,7 +37,5 @@ getoldtweets_path = paste(getwd(),"/GetOldTweets-java-master", sep="")
 library("rscopus")
 #set_api_key("<your-own-scopus-api-key>")
 #alternatively you may store it a personal file somewhere else. 
-#source("C:/Users/mmantyla/Dropbox/Research - Publications/2017 Agile Book Chapter/Scripts/SetScopusApiKey.R") 
 
-#api_key Janne
-#sc_api_key = "320b07d78fa6a4b47b7dcc1f156658de"
+#api keys are now located in classroom specificsettings
