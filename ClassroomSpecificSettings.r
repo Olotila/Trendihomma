@@ -58,7 +58,10 @@ if (libPath %in% .libPaths() == FALSE)
   .libPaths(c(libPath,.libPaths()))
 }
 
-sc_api_key = "cbf4132ececcb84b58a2aa5244ba7ce7"
+#Key Janne
+sc_api_key = "320b07d78fa6a4b47b7dcc1f156658de"
+
+#sc_api_key = "cbf4132ececcb84b58a2aa5244ba7ce7"
 
 so_api_key = "EgDQqc14dkQjHIDevXFJ)A(("
 
@@ -71,5 +74,10 @@ getoldtweets_path = paste(my_work_dir,"/GetOldTweets-java-master", sep="")
 #various stopword lists can be used https://cran.r-project.org/web/packages/stopwords/stopwords.pdf
 #stopword list is also context specific. Here you can do manual removals
 #also automated methods tf/idf exist. EDIT
-my_stopwords = c(stopwords::stopwords(language = "en", source = "snowball"),"botnet", "botnets")
+#my_stopwords = c(stopwords::stopwords(language = "en", source = "snowball"),"botnet", "botnets")
 
+#below changes by janne
+#Need to remove stopwords from everywhere else so you only need to edit them here!
+#remember to install install.packages("stopwords", dependencies = TRUE)
+library("stopwords")
+my_stopwords = c(stopwords::stopwords(language = "en", source = "snowball"),"botnet", "botnets")

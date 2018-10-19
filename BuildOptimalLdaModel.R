@@ -17,6 +17,8 @@ library("tokenizers")
 
 #Set the file to be analyzed, e.g.
 
+my_data_dir = 'data'
+
 # LAITA TÄHÄN oma filunimi
 # my_file = "my_Scopus_botnet-sco_data.RData"
 my_file = "my_Scopus_botnet-sco_data.RData"
@@ -25,8 +27,8 @@ my_temp_file = paste(my_data_dir, "/", sep="")
 my_temp_file = paste(my_temp_file, my_file, sep="")
 load(my_temp_file)
 
-# TÄMÄ ON LAITETTAVISSA clasroomsettings filussa
-my_stopwords = c(stopwords::stopwords(language = "en", source = "snowball"),"myStopword1", "myStopword2")
+#stopwords in classroomsepesificsettings so no need to have them other files (see my file - classroomSpesificSettingJanne)
+#my_stopwords = c(stopwords::stopwords(language = "en", source = "snowball"),"myStopword1", "myStopword2")
 
 #Articles with NA dates cause false analysis later kick them out
 my_articles <- my_articles[which(!is.na(my_articles$Date)),]

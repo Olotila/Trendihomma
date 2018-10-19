@@ -8,7 +8,8 @@ rm(list=ls())
 #** A folder "data" will be created for saving files (if such folder does not exist)
 #** EDIT THE FOLLOWING LINE, set your own work directory
 #setwd("K:/My Documents/Projects/TrendMining_2017/TrendMining")
-setwd("C:/Users/mmantyla/Dropbox/Teach/2018_Trends_update_git/TrendMining")
+#setwd("D:/Git/TrendMining")
+setwd("C:/Users/jannkall/Desktop/Trendihomma")
 my_work_dir = getwd()
 my_data_dir = "data"
 if (!file.exists(my_data_dir)) {
@@ -38,5 +39,7 @@ getoldtweets_path = paste(getwd(),"/GetOldTweets-java-master", sep="")
 library("rscopus")
 #set_api_key("<your-own-scopus-api-key>")
 #alternatively you may store it a personal file somewhere else. 
-source("C:/Users/mmantyla/Dropbox/Research - Publications/2017 Agile Book Chapter/Scripts/SetScopusApiKey.R") 
+#source("C:/Users/mmantyla/Dropbox/Research - Publications/2017 Agile Book Chapter/Scripts/SetScopusApiKey.R") 
 
+#api_key Janne
+#sc_api_key = "320b07d78fa6a4b47b7dcc1f156658de"

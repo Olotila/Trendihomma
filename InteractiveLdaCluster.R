@@ -1,7 +1,7 @@
 #install.packages("text2vec", dependencies=TRUE)
-# install.packages("tm", dependencies=TRUE)
+#install.packages("tm", dependencies=TRUE)
 #install.packages("magrittr", dependencies=TRUE)
-# install.packages("LDAvis")
+#install.packages("LDAvis")
 # install.packages("NLP", dependencies = TRUE)
 
 library(text2vec)
@@ -26,8 +26,8 @@ my_file = "my_Scopus_botnet-sco_data.RData"
   my_tokens = my_text %>% tolower %>% word_tokenizer
   
   it = itoken(my_tokens)
-  #TÄMÄ HOITUIS clasroomspecific filulla
-  my_stopwords = c(stopwords::stopwords(language = "en", source = "snowball"),"myStopword1", "myStopword2")
+  #stopwords in classroomsepesificsettings so no need to have them other files (see my file - classroomSpesificSettingJanne)
+  #my_stopwords = c(stopwords::stopwords(language = "en", source = "snowball"),"myStopword1", "myStopword2")
   
   
   #Remove stopwords

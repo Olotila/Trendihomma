@@ -1,4 +1,4 @@
-#install.packages("text2vec", dependencies = TRUE)
+install.packages("text2vec", dependencies = TRUE)
 library("text2vec")
 
 
@@ -16,7 +16,15 @@ source("FunctionsScopusApi.R")
 #query_string = "ISSN(0098-5589)"
 #my_filename = "TSE_All"
 
-set_api_key("cbf4132ececcb84b58a2aa5244ba7ce7")
+set_api_key(sc_api_key)
+
+#api_key Janne
+#sc_api_key = "320b07d78fa6a4b47b7dcc1f156658de"
+#elsevier_api_key = "320b07d78fa6a4b47b7dcc1f156658de"
+#elsevier_api_key_filename = "320b07d78fa6a4b47b7dcc1f156658de"
+
+
+#set_api_key("cbf4132ececcb84b58a2aa5244ba7ce7")
 # elsevier_api_key = "cbf4132ececcb84b58a2aa5244ba7ce7"
 #For example
 #Finds 321 papers (29 April 2018). Suitable for classroom demo
